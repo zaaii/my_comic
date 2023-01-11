@@ -4,7 +4,7 @@ My Comic is an Android App for read a bunch of manga and manhwa
 
 ## ✏️ What i use ?
 
-* https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white , https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white
+* ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white) , ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 
 * **Ui Design Inspiration**
 
