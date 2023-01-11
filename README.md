@@ -1,16 +1,9 @@
-# my_comic
+# My Comic
 
-A new Flutter project.
+My Comic is an Android App for read a bunch of manga and manhwa
 
-## Getting Started
+## What i use ?
 
-This project is a starting point for a Flutter application.
+![UI 1](screenshot/ui1.webp?raw=true "UI Inspiration 1")
+![UI 2](screenshot/ui2.webp?raw=true "UI Inspiration 1")
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

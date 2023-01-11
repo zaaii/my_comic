@@ -65,8 +65,7 @@ final List<Widget> imageSliders = imgList
                               Text(
                                 '8.0',
                                 style: TextStyle(
-                                    color: kWhite,
-                                    fontWeight: FontWeight.bold),
+                                    color: kWhite, fontWeight: FontWeight.bold),
                               )
                             ],
                           )
@@ -87,48 +86,49 @@ final List<Widget> imageSliders = imgList
     )
     .toList();
 
-
 class NewReleaseComic extends StatelessWidget {
   late ComicBloc _comicBloc;
-  
-  @override
-  void initState() {
-    _comicBloc = BlocProvider.of<ComicBloc>(context);
-    _comicBloc.add(FetchComicEvent());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    
+    @override
+    void initState() {
+      _comicBloc = BlocProvider.of<ComicBloc>(context);
+      _comicBloc.add(FetchComicEvent());
+    }
+
     return Container(
-      child: imgList.isEmpty 
-      ? Center(child: CircularProgressIndicator(),)
-      : CarouselSlider(
-        options: CarouselOptions(
-          autoPlay: true,
-          aspectRatio: 2.0,
-          enlargeCenterPage: true,
-        ),
-        items: imgList.map((url){
-          return Builder(
-            builder: (BuildContext context){
-              return GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ComicDetailPage()));
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: BoxDecoration(
-                    color: Colors.amber
-                  ),
-                  child: Image.network(url, fit: BoxFit.cover),
-                ),
-              );
-            },
-          );
-        }).toList()
-      ),
+      child: imgList.isEmpty
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : CarouselSlider(
+              options: CarouselOptions(
+                autoPlay: true,
+                aspectRatio: 2.0,
+                enlargeCenterPage: true,
+              ),
+              items: imgList.map((url) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ComicDetailPage()));
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(color: Colors.amber),
+                        child: Image.network(url, fit: BoxFit.cover),
+                      ),
+                    );
+                  },
+                );
+              }).toList()),
     );
   }
 }
