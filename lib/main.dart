@@ -5,6 +5,7 @@ import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 import 'package:my_comic/presentation/pages/home_page.dart';
 import 'package:my_comic/presentation/pages/main_page.dart';
+import 'package:my_comic/utils/routes.dart';
 import 'locator.dart' as di;
 
 void main() async {
@@ -15,8 +16,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -25,11 +24,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<HotComicsBloc>(create: (_) => di.locator<HotComicsBloc>(),)
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'My Zencomic',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         home: MainPage(),
+        navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
             case HomePage.ROUTE_NAME:
@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
               default:
                 return MaterialPageRoute(
                   builder: (_) {
-                    return Scaffold(
+                    return const Scaffold(
                       body: Center(
-                        child: const Text('Page Not Found :('),
+                        child: Text('Page Not Found :('),
                       ),
                     );
                   },

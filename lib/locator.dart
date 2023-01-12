@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:my_comic/data/datasources/comic_remote_datasource.dart';
 import 'package:my_comic/data/repositories/comic_repository_impl.dart';
