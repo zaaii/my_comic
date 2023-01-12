@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 
 class DetailComicPage extends StatefulWidget {
   static const ROUTE_NAME = '/detail_comic';

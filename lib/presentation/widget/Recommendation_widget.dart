@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 
-class MostPopularWidget extends StatelessWidget {
-  const MostPopularWidget({
-    Key? key,
-  }) : super(key: key);
+class RecommendationWidget extends StatefulWidget {
+  const RecommendationWidget({super.key});
+
+  @override
+  State<RecommendationWidget> createState() => _RecommendationWidgetState();
+}
+
+class _RecommendationWidgetState extends State<RecommendationWidget> {
+  late ComicBloc _comicBloc;
+
+  @override
+  void initState() {
+    _comicBloc = BlocProvider.of<ComicBloc>(context);
+    _comicBloc.add(FetchComicEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +28,11 @@ class MostPopularWidget extends StatelessWidget {
         child: BlocBuilder<ComicBloc, ComicState>(
           builder: (context, state) {
             if (state is ComicHasData) {
-              return ListView(
-                padding: EdgeInsets.all(10),
-                children: [
+              return ListView(padding: const EdgeInsets.all(10), children: [
                 GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
@@ -33,8 +42,7 @@ class MostPopularWidget extends StatelessWidget {
                     final comic = state.result[index];
                     return InkWell(
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, DetailComicPage.ROUTE_NAME,
+                        Navigator.pushNamed(context, DetailComicPage.ROUTE_NAME,
                             arguments: state.result[index].param);
                       },
                       child: Stack(children: [
@@ -53,8 +61,7 @@ class MostPopularWidget extends StatelessWidget {
                             right: 0,
                             child: Container(
                               decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(16),
+                                borderRadius: BorderRadius.circular(16),
                                 gradient: const LinearGradient(
                                   colors: [
                                     Color.fromARGB(200, 0, 0, 0),
@@ -68,8 +75,7 @@ class MostPopularWidget extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10.0, horizontal: 10.0),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       comic.title,
@@ -78,8 +84,7 @@ class MostPopularWidget extends StatelessWidget {
                                       softWrap: false,
                                       style: const TextStyle(
                                           color: kWhite,
-                                          fontWeight:
-                                              FontWeight.bold),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       comic.latestChapter,
@@ -87,8 +92,7 @@ class MostPopularWidget extends StatelessWidget {
                                       maxLines: 1,
                                       softWrap: false,
                                       style: const TextStyle(
-                                          color: Colors.white60,
-                                          fontSize: 10),
+                                          color: Colors.white60, fontSize: 10),
                                     ),
                                   ],
                                 ),
@@ -102,6 +106,10 @@ class MostPopularWidget extends StatelessWidget {
             } else if (state is ComicError) {
               return Center(
                 child: Text(state.message),
+              );
+            } else if (state is ComicEmpty) {
+              return Center(
+                child: Text('Tidak Ada Data'),
               );
             } else {
               return const Center(

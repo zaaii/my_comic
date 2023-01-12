@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 import 'package:my_comic/presentation/pages/bookmark_page.dart';
 import 'package:my_comic/presentation/pages/comic_page.dart';
 import 'package:my_comic/presentation/pages/home_page.dart';
 import 'package:my_comic/presentation/pages/more_page.dart';
-import 'package:my_comic/presentation/widget/caraousel_widget.dart';
-import 'package:my_comic/presentation/widget/mostPopular_widget.dart';
-import 'package:my_comic/presentation/widget/newRelease_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

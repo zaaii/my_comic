@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 
 class ComicPage extends StatefulWidget {
   const ComicPage({super.key});

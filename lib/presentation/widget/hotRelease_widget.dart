@@ -3,34 +3,33 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
+import 'package:my_comic/utils/color.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
 
-final List<String> imgList = [];
-
-class NewReleaseComic extends StatefulWidget {
-  const NewReleaseComic({super.key});
+class HotReleaseWidget extends StatefulWidget {
+  const HotReleaseWidget({super.key});
 
   @override
-  State<NewReleaseComic> createState() => _NewReleaseComicState();
+  State<HotReleaseWidget> createState() => _HotReleaseWidgetState();
 }
 
-class _NewReleaseComicState extends State<NewReleaseComic> {
-  late ComicBloc _comicBloc;
+class _HotReleaseWidgetState extends State<HotReleaseWidget> {
+  late HotComicsBloc _hotComicsBloc;
 
   @override
   void initState() {
-    _comicBloc = BlocProvider.of<ComicBloc>(context);
-    _comicBloc.add(FetchComicEvent());
+    _hotComicsBloc = BlocProvider.of<HotComicsBloc>(context);
+    _hotComicsBloc.add(FetchHotComicsEvent());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: BlocBuilder<ComicBloc, ComicState>(
+    return BlocBuilder<HotComicsBloc, HotComicsState>(
       builder: (context, state) {
-        if (state is ComicHasData) {
+        if (state is HotComicsHasData) {
           return CarouselSlider.builder(
             options: CarouselOptions(
               autoPlay: true,
@@ -124,7 +123,7 @@ class _NewReleaseComicState extends State<NewReleaseComic> {
               );
             }),
           );
-        } else if (state is ComicError) {
+        } else if (state is HotComicsError) {
           return Center(
             child: Text(state.message),
           );
@@ -134,6 +133,6 @@ class _NewReleaseComicState extends State<NewReleaseComic> {
           );
         }
       },
-    ));
+    );
   }
 }

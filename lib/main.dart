@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
+import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 import 'package:my_comic/presentation/pages/home_page.dart';
 import 'package:my_comic/presentation/pages/main_page.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ComicBloc>(create: (_) => di.locator<ComicBloc>(),)
+        BlocProvider<ComicBloc>(create: (_) => di.locator<ComicBloc>(),),
+        BlocProvider<HotComicsBloc>(create: (_) => di.locator<HotComicsBloc>(),)
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

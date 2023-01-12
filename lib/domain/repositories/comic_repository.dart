@@ -5,6 +5,7 @@ import 'package:my_comic/domain/entities/chapter.dart';
 
 abstract class ComicRepository {
   Future<Either<Exception, List<Comic>>> getComics();
+  Future<Either<Exception, List<Comic>>> getHotComics();
   Future<Either<Exception, DetailComic>> getDetailComic(String param);
   Future<Either<Exception, Chapter>> getChapter(String param);
 }

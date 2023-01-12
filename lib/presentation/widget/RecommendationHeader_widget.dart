@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 
-class mostPopularSub_widget extends StatelessWidget {
-  const mostPopularSub_widget({
+class RecommendationHeaderWidget extends StatelessWidget {
+  const RecommendationHeaderWidget({
     Key? key,
   }) : super(key: key);
 
@@ -15,7 +15,7 @@ class mostPopularSub_widget extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text('Most Popular Comics',
                   style: TextStyle(
                       color: kWhite,
@@ -29,7 +29,7 @@ class mostPopularSub_widget extends StatelessWidget {
           ),
           InkWell(
             child: Row(
-              children: [
+              children: const [
                 Text('Show more', style: TextStyle(color: kTextSecondColor)),
                 Icon(Icons.navigate_next_outlined, color: kWhite)
               ],

@@ -11,6 +11,7 @@ import 'package:my_comic/data/models/chapter_response.dart';
 
 abstract class ComicRemoteDataSource {
   Future<List<ComicModel>> getComics();
+  Future<List<ComicModel>> getHotComics();
   Future<DetailComicModel> getDetailComic(String param);
   Future<ChaptersModel> getChapter(String param);
 }
@@ -25,6 +26,16 @@ class ComicRemoteDataSourceImpl implements ComicRemoteDataSource {
   @override
   Future<List<ComicModel>> getComics() async {
     final response = await dio.get('$BASE_URL');
+    if (response.statusCode == 200) {
+      return ComicResponse.fromJson(response.data).comicModel;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+    @override
+  Future<List<ComicModel>> getHotComics() async {
+    final response = await dio.get('$BASE_URL/hot');
     if (response.statusCode == 200) {
       return ComicResponse.fromJson(response.data).comicModel;
     } else {

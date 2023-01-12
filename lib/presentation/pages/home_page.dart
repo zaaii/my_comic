@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
-import 'package:my_comic/const/color.dart';
-import 'package:my_comic/presentation/pages/comicDetail_page.dart';
-import 'package:my_comic/presentation/widget/caraousel_widget.dart';
-import 'package:my_comic/presentation/widget/mostPopularList_widget.dart';
-import 'package:my_comic/presentation/widget/mostPopular_widget.dart';
-import 'package:my_comic/presentation/widget/newRelease_widget.dart';
+import 'package:my_comic/presentation/widget/RecommendationHeader_widget.dart';
+import 'package:my_comic/presentation/widget/Recommendation_widget.dart';
+import 'package:my_comic/presentation/widget/hotRelease_widget.dart';
+import 'package:my_comic/utils/color.dart';
+import 'package:my_comic/presentation/widget/hotReleaseHeader_widget.dart';
 
 class HomePage extends StatefulWidget {
   static const ROUTE_NAME = '/home_page';
@@ -96,11 +95,12 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               // New Release Section
-              const newReleaseSub_widget(),
-              const NewReleaseComic(),
+              const HotReleaseHeaderWidget(),
+              const HotReleaseWidget(),
+              
               // Most Popular Comic
-              const mostPopularSub_widget(),
-              const MostPopularWidget(),
+              const RecommendationHeaderWidget(),
+              const RecommendationWidget(),
             ]),
           ),
         ),

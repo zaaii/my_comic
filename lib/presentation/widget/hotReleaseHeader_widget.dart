@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_comic/const/color.dart';
+import 'package:my_comic/utils/color.dart';
 
-class newReleaseSub_widget extends StatelessWidget {
-  const newReleaseSub_widget({
+class HotReleaseHeaderWidget extends StatelessWidget {
+  const HotReleaseHeaderWidget({
     Key? key,
   }) : super(key: key);
 
@@ -16,13 +16,13 @@ class newReleaseSub_widget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('New Release !',
+              Text('Hot Release !',
                   style: TextStyle(
                       color: kWhite,
                       fontWeight: FontWeight.bold,
                       fontSize: 20)),
               Text(
-                'Read latest comic recommendations',
+                'Read latest hot comics',
                 style: TextStyle(color: kTextSecondColor),
               ),
             ],

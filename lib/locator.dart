@@ -5,7 +5,9 @@ import 'package:my_comic/data/datasources/comic_remote_datasource.dart';
 import 'package:my_comic/data/repositories/comic_repository_impl.dart';
 import 'package:my_comic/domain/repositories/comic_repository.dart';
 import 'package:my_comic/domain/usecase/get_comic.dart';
+import 'package:my_comic/domain/usecase/get_hot_comic.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
+import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -23,9 +25,11 @@ Future<void> init() async {
 
   // Bloc
   locator.registerLazySingleton<ComicBloc>(() => ComicBloc(locator()));
+  locator.registerLazySingleton<HotComicsBloc>(() => HotComicsBloc(locator()));
 
   // Usecase
   locator.registerLazySingleton<GetComic>(() => GetComic(locator()));
+  locator.registerLazySingleton<GetHotComic>(() => GetHotComic(locator()));
 
   // Helper
   locator.registerLazySingleton<Dio>(() => Dio());

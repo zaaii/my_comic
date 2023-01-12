@@ -24,6 +24,18 @@ class ComicRepositoryImpl implements ComicRepository {
     }
   }
 
+    @override
+  Future<Either<Exception, List<Comic>>> getHotComics() async {
+    try {
+      final result = await remoteDataSource.getHotComics();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on SocketException {
+      return Left(SocketException('No Internet connection'));
+    } on Exception {
+      return Left(Exception('Error'));
+    }
+  }
+
   @override
   Future<Either<Exception, DetailComic>> getDetailComic(String param) async {
     try {
