@@ -10,7 +10,7 @@ abstract class ChapterEvent extends Equatable {
 class FetchChapterEvent extends ChapterEvent {
   final String param;
 
-  FetchChapterEvent(this.param);
+  const FetchChapterEvent(this.param);
 
   @override
   List<Object> get props => [param];

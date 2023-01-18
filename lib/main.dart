@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_comic/presentation/bloc/chapter/chapter_bloc.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
+import 'package:my_comic/presentation/bloc/detail_comic/detail_comic_bloc.dart';
 import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 import 'package:my_comic/presentation/pages/home_page.dart';
 import 'package:my_comic/presentation/pages/main_page.dart';
+import 'package:my_comic/presentation/pages/readPage_page.dart';
 import 'package:my_comic/utils/routes.dart';
 import 'locator.dart' as di;
 
@@ -20,8 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ComicBloc>(create: (_) => di.locator<ComicBloc>(),),
-        BlocProvider<HotComicsBloc>(create: (_) => di.locator<HotComicsBloc>(),)
+        BlocProvider<ComicBloc>(
+          create: (_) => di.locator<ComicBloc>(),
+        ),
+        BlocProvider<HotComicsBloc>(
+          create: (_) => di.locator<HotComicsBloc>(),
+        ),
+        BlocProvider<DetailComicBloc>(
+          create: (_) => di.locator<DetailComicBloc>(),
+        ),
+        BlocProvider<ChapterBloc>(
+          create: (_) => di.locator<ChapterBloc>(),
+        ),
       ],
       child: MaterialApp(
         title: 'My Zencomic',
@@ -37,19 +50,31 @@ class MyApp extends StatelessWidget {
                 builder: (_) => HomePage(),
               );
             case DetailComicPage.ROUTE_NAME:
+              final param = settings.arguments as String;
               return MaterialPageRoute(
-                builder: (_) => DetailComicPage(),
+                builder: (_) => DetailComicPage(
+                  param: param,
+                ),
+                settings: settings,
               );
-              default:
-                return MaterialPageRoute(
-                  builder: (_) {
-                    return const Scaffold(
-                      body: Center(
-                        child: Text('Page Not Found :('),
-                      ),
-                    );
-                  },
-                );
+            case ReadPage.ROUTE_NAME:
+              final param = settings.arguments as String;
+              return MaterialPageRoute(
+                builder: (_) => ReadPage(
+                  param: param,
+                ),
+                settings: settings,
+              );
+            default:
+              return MaterialPageRoute(
+                builder: (_) {
+                  return const Scaffold(
+                    body: Center(
+                      child: Text('Page Not Found :('),
+                    ),
+                  );
+                },
+              );
           }
         },
       ),

@@ -67,6 +67,7 @@ class ComicRepositoryImpl implements ComicRepository {
       return const Left(ConnectionFailure('Gagal Terhubung Ke Internet'));
     } catch (e) {
       return Left(CommonFailure(e.toString()));
+
     }
   }
 }

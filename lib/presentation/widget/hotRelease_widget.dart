@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
 import 'package:my_comic/utils/color.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
@@ -104,15 +106,15 @@ class _HotReleaseWidgetState extends State<HotReleaseWidget> {
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
-                                    child: Image.network(
-                                      comic.thumbnail,
+                                    child: CachedNetworkImage(
+                                      imageUrl: comic.thumbnail,
                                       fit: BoxFit.cover,
-                                      scale: 5,
                                       height: 150,
                                       width: 100,
+                                      errorWidget: (context, url, error) => const Icon(Icons.error),
                                     )),
                               ),
                             ],
@@ -125,11 +127,11 @@ class _HotReleaseWidgetState extends State<HotReleaseWidget> {
           );
         } else if (state is HotComicsError) {
           return Center(
-            child: Text(state.message),
+            child: Text(state.message, style: const TextStyle(color: kWhite)),
           );
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: LoadingAnimationWidget.staggeredDotsWave(color: kWhite, size: 70),
           );
         }
       },

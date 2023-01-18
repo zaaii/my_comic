@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:my_comic/data/models/chapter_model.dart';
 
 class ChapterResponse extends Equatable {
-  final List<ChaptersModel> chapterModel;
+  final ChaptersModel chapterModel;
 
   const ChapterResponse({
     required this.chapterModel,
@@ -10,12 +12,14 @@ class ChapterResponse extends Equatable {
 
   factory ChapterResponse.fromJson(Map<String, dynamic> json) =>
       ChapterResponse(
-        chapterModel: List<ChaptersModel>.from(
-            json["data"].map((x) => ChaptersModel.fromJson(x))),
-      );
+        chapterModel: ChaptersModel.fromJson(json));
+
+  Map<String, dynamic> toJson() => {
+        "data": jsonEncode(chapterModel),
+      };
 
   @override
-  List<Object?> get props => [
+  List<Object> get props => [
         chapterModel,
       ];
 }

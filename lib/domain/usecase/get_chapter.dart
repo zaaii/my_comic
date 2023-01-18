@@ -8,7 +8,7 @@ class GetChapter {
 
   GetChapter(this.repository);
 
-  Future<Either<Failure, Chapter>> call(String param) async {
+  Future<Either<Failure, Chapter>> execute(String param) async {
     return await repository.getChapter(param);
   }
 }

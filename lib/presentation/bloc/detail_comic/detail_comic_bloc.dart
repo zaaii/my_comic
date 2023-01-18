@@ -13,7 +13,7 @@ class DetailComicBloc extends Bloc<DetailComicEvent, DetailComicState> {
     on<DetailComicEvent>((event, emit) async {
       if (event is FetchDetailComicEvent) {
         emit(DetailComicLoading());
-        final result = await _getDetailComic(event.param);
+        final result = await _getDetailComic.execute(event.param);
 
         result.fold(
           (exception) => emit(DetailComicError(exception.toString())),

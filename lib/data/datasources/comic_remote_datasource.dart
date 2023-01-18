@@ -1,7 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:my_comic/data/models/comic_model.dart';
 import 'package:my_comic/data/models/comic_response.dart';
 import 'package:my_comic/data/models/detail_comic_model.dart';
@@ -18,14 +18,14 @@ abstract class ComicRemoteDataSource {
 
 class ComicRemoteDataSourceImpl implements ComicRemoteDataSource {
   static const String BASE_URL = 'https://wibutools.live/api/komiku';
-  // final http.Client client;
+  static const String CHAPTER_URL = 'https://wibutools.live/api/komiku/chapter';
   final Dio dio;
 
   ComicRemoteDataSourceImpl({required this.dio});
 
   @override
   Future<List<ComicModel>> getComics() async {
-    final response = await dio.get('$BASE_URL');
+    final response = await dio.get(BASE_URL);
     if (response.statusCode == 200) {
       return ComicResponse.fromJson(response.data).comicModel;
     } else {
@@ -56,11 +56,9 @@ class ComicRemoteDataSourceImpl implements ComicRemoteDataSource {
 
   @override
   Future<ChaptersModel> getChapter(String param) async {
-    final response = await dio.get('$BASE_URL/$param');
+    final response = await dio.get('$CHAPTER_URL/$param');
     if (response.statusCode == 200) {
-      var chapterList =
-          ChapterResponse.fromJson(response.data).chapterModel;
-      return chapterList[0];
+      return ChapterResponse.fromJson(response.data).chapterModel;
     } else {
       throw Exception('Failed to load data');
     }

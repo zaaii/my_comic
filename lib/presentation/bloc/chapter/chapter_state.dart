@@ -12,9 +12,9 @@ class ChapterEmpty extends ChapterState {}
 class ChapterLoading extends ChapterState {}
 
 class ChapterHasData extends ChapterState {
-  final List<Chapter> result;
+  final Chapter result;
 
-  ChapterHasData(this.result);
+  const ChapterHasData(this.result);
 
   @override
   List<Object> get props => [result];
@@ -23,7 +23,7 @@ class ChapterHasData extends ChapterState {
 class ChapterError extends ChapterState {
   final String message;
 
-  ChapterError(this.message);
+  const ChapterError(this.message);
 
   @override
   List<Object> get props => [message];

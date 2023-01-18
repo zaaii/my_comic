@@ -16,7 +16,7 @@ class RecommendationHeaderWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('Most Popular Comics',
+              Text('Recommendations For You',
                   style: TextStyle(
                       color: kWhite,
                       fontWeight: FontWeight.bold,

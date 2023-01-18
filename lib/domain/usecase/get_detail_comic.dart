@@ -8,7 +8,7 @@ class GetDetailComic {
 
   GetDetailComic(this.repository);
 
-  Future<Either<Failure, DetailComic>> call(String param) async {
+  Future<Either<Failure, DetailComic>> execute(String param) async {
     return await repository.getDetailComic(param);
   }
 }
