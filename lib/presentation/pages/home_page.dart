@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
+import 'package:my_comic/presentation/pages/search_page.dart';
 import 'package:my_comic/presentation/widget/RecommendationHeader_widget.dart';
 import 'package:my_comic/presentation/widget/Recommendation_widget.dart';
 import 'package:my_comic/presentation/widget/hotRelease_widget.dart';
@@ -79,8 +80,12 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     Row(
-                      children: const [
-                        Icon(Icons.search, color: kWhite),
+                      children:  [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+                          },
+                          child: Icon(Icons.search, color: kWhite)),
                         SizedBox(width: 20),
                         Icon(
                           Icons.notifications,

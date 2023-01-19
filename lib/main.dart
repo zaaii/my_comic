@@ -4,10 +4,12 @@ import 'package:my_comic/presentation/bloc/chapter/chapter_bloc.dart';
 import 'package:my_comic/presentation/bloc/comic/comic_bloc.dart';
 import 'package:my_comic/presentation/bloc/detail_comic/detail_comic_bloc.dart';
 import 'package:my_comic/presentation/bloc/hotComic/hot_comics_bloc.dart';
+import 'package:my_comic/presentation/bloc/pencarian/pencarian_bloc.dart';
 import 'package:my_comic/presentation/pages/comicDetail_page.dart';
 import 'package:my_comic/presentation/pages/home_page.dart';
 import 'package:my_comic/presentation/pages/main_page.dart';
 import 'package:my_comic/presentation/pages/readPage_page.dart';
+import 'package:my_comic/presentation/pages/search_page.dart';
 import 'package:my_comic/utils/routes.dart';
 import 'locator.dart' as di;
 
@@ -34,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ChapterBloc>(
           create: (_) => di.locator<ChapterBloc>(),
+        ),
+        BlocProvider<PencarianBloc>(
+          create: (_) => di.locator<PencarianBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -63,6 +68,11 @@ class MyApp extends StatelessWidget {
                 builder: (_) => ReadPage(
                   param: param,
                 ),
+                settings: settings,
+              );
+            case SearchPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                builder: (_) => SearchPage(),
                 settings: settings,
               );
             default:

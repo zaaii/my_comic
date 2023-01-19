@@ -9,4 +9,5 @@ abstract class ComicRepository {
   Future<Either<Failure, List<Comic>>> getHotComics();
   Future<Either<Failure, DetailComic>> getDetailComic(String param);
   Future<Either<Failure, Chapter>> getChapter(String param);
+  Future<Either<Failure, List<Comic>>> getPencarian(String query);
 }

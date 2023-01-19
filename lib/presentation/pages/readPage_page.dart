@@ -51,17 +51,15 @@ class _ReadPageState extends State<ReadPage> {
                   final chapter = state.result;
                   return CachedNetworkImage(
                     imageUrl:  chapter.data[index],
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(
-                        color: kWhite,
-                      ),
+                    placeholder: (context, url) => Center(
+                      child: LoadingAnimationWidget.waveDots(color: kWhite, size: 30)
                     ),
                   );
                 },);
           } else if (state is ChapterEmpty) {
             return const Center(
               child: Text("Detail Komik Tidak Ditemukan",
-                  style: const TextStyle(color: kWhite)),
+                  style: TextStyle(color: kWhite)),
             );
           } else if (state is ChapterError) {
             return Center(
@@ -71,7 +69,7 @@ class _ReadPageState extends State<ReadPage> {
           } else {
             return const Center(
               child: Text('Oops, Coba kembali ya ;(',
-                  style: const TextStyle(color: kWhite)),
+                  style: TextStyle(color: kWhite)),
             );
           }
         }));

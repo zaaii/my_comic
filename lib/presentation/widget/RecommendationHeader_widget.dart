@@ -27,14 +27,6 @@ class RecommendationHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          InkWell(
-            child: Row(
-              children: const [
-                Text('Show more', style: TextStyle(color: kTextSecondColor)),
-                Icon(Icons.navigate_next_outlined, color: kWhite)
-              ],
-            ),
-          ),
         ],
       ),
     );

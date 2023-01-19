@@ -27,14 +27,6 @@ class HotReleaseHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          InkWell(
-            child: Row(
-              children: [
-                Text('Show more', style: TextStyle(color: kTextSecondColor)),
-                Icon(Icons.navigate_next_outlined, color: kWhite)
-              ],
-            ),
-          ),
         ],
       ),
     );

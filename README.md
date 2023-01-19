@@ -8,7 +8,7 @@ My Comic is an Android App for read a bunch of manga and manhwa
 - [x]   Show Comic Detail
 - [x]   Show Comic Image chapter
 - [x]   Show Chapter Lists in Comic Detail
-- [ ]   Search Comic
+- [x]   Search Comic
 - [ ]   Login Page
 - [ ]   Show comic list based on Genre
 - [ ]   User can bookmark a comic

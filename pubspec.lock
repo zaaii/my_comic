@@ -348,7 +348,7 @@ packages:
     source: hosted
     version: "2.2.0"
   rxdart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rxdart
       url: "https://pub.dartlang.org"

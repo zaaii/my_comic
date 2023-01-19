@@ -70,4 +70,18 @@ class ComicRepositoryImpl implements ComicRepository {
 
     }
   }
+
+  @override
+  Future<Either<Failure, List<Comic>>> getPencarian(String query) async {
+    try {
+      final result = await remoteDataSource.getPencarian(query);
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return const Left(ServerFailure('Server Error'));
+    } on SocketException {
+      return const Left(ConnectionFailure('Gagal Terhubung Ke Internet'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
 }
