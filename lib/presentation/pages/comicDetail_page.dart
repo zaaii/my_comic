@@ -49,7 +49,7 @@ class _DetailComicPageState extends State<DetailComicPage> {
               );
             } else {
               return const Center(
-                child: Text('Terjadi Kesalahan ;(',
+                child: Text('Terjadi Kesalahan ;(, Coba lagi',
                     style: const TextStyle(color: kWhite)),
               );
             }
@@ -107,6 +107,9 @@ class DetailContent extends StatelessWidget {
                         height: 150,
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
+                        placeholder: (context, url) {
+                          return Center(child: LoadingAnimationWidget.discreteCircle(color: kWhite, size: 20));
+                        },
                       ),
                     ),
                   ),
