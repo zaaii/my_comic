@@ -33,7 +33,7 @@ My Comic is an Android App for read a bunch of manga and manhwa
 
 ## 📲 Download
 
-⬇️ **Download Here :** Coming Soon
+⬇️ **Download Here :** https://drive.google.com/file/d/1eI_nVBU0SGnOQxCPpnBwG5lWmrXauTgc/view?usp=sharing (**Just have some main feature**)
 
 ## 📄 License
 [![LICENSE: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/zaaii/my_comic/blob/master/LICENSE.md)
